@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: tradedesk-api
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/tradedesk}
+    username: ${DATABASE_USERNAME:tradedesk}
+    password: ${DATABASE_PASSWORD:tradedesk}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+server:
+  port: ${PORT:8080}
+app:
+  security:
+    jwt-secret: ${JWT_SECRET:local-development-secret-key-change-before-deploying-123456}
+  risk:
+    maximum-order-value: ${MAXIMUM_ORDER_VALUE:1000000}
